@@ -1,0 +1,38 @@
+{
+  "mqtt": {
+    "url": "mqtt://user:pass@broker.local"
+  },
+  "handlers": {
+    "RoomPresenceHandler": {
+      "room": "home",
+      "devices": [
+        {
+          "mac": "ab:cd:ef:01:23:45",
+          "id": "abcdef12345",
+          "name": "Keychain Beacon"
+        }
+      ]
+    },
+    "OralBToothbrushHandler": {
+      "devices": [
+        {
+          "mac": "ab:cd:ef:01:23:45",
+          "id": "Series7000",
+          "name": "Series 7000"
+        }
+      ]
+    },
+    "XiaomiV2ScaleHandler": {
+      "devices": [
+        {
+          "mac": "ab:cd:ef:01:23:45",
+          "id": "miscale",
+          "name": "Mi Body Scale",
+          "userSex": "M",
+          "userHeight": 180,
+          "userBirthday": "1980-01-01T00:00:00.000Z"
+        }
+      ]
+    }
+  }
+}

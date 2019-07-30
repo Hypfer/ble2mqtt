@@ -1,0 +1,15 @@
+[Unit]
+Description=ble2mqtt
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/node /home/pi/ble2mqtt/app.js
+WorkingDirectory=/home/pi/ble2mqtt/
+RestartSec=2
+TimeoutStartSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
