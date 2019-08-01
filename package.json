@@ -9,8 +9,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "noble": "^1.9.1",
-    "bluetooth-hci-socket": "^0.5.1",
+    "@abandonware/bluetooth-hci-socket": "^0.5.3-1",
+    "@abandonware/noble": "git://github.com/Hypfer/noble.git",
+    "async": "^2.6.0",
     "mqtt": "^2.18.8"
   }
 }

@@ -1,9 +1,10 @@
 const mqtt = require("mqtt");
-const noble = require('noble');
+const noble = require('@abandonware/noble');
 
 const RoomPresenceHandler = require("./handlers/RoomPresenceHandler");
 const OralBToothbrushHandler = require("./handlers/OralBToothbrushHandler");
 const XiaomiV2ScaleHandler = require("./handlers/XiaomiV2ScaleHandler");
+const XiaomiMiKettleHandler = require("./handlers/XiaomiMiKettleHandler");
 
 const config = require("./config.json");
 const mqttClient = mqtt.connect(config.mqtt.url, {});
@@ -52,7 +53,19 @@ mqttClient.on("connect", () => {
                     userBirthday: new Date(d.userBirthday)
                 }
             })
-        }))
+        })),
+        new XiaomiMiKettleHandler(Object.assign({}, {mqttClient: mqttClient}, {
+            noble: noble,
+            devices: config.handlers.XiaomiMiKettleHandler.devices.map(d => {
+                return {
+                    mac: d.mac.toLowerCase(),
+                    id: d.id,
+                    name: d.name,
+                    productId: d.productId,
+                    reverseMac: Buffer.from(d.mac.split(":").map(b => parseInt("0x"+b)).reverse())
+                }
+            })
+        })),
     ];
 
     handlers.forEach(handler => {
@@ -62,6 +75,9 @@ mqttClient.on("connect", () => {
     });
 
     noble.on("discover", peripheral => {
+        if(peripheral.advertisement) {
+            console.log("Found ", peripheral.advertisement.localName);
+        }
         handlers.forEach(h => {
             h.handle(peripheral);
         })
