@@ -31,7 +31,7 @@ XiaomiV2ScaleHandler.prototype.setupAutodiscovery = function () {
             "platform": "mqtt",
             "unit_of_measurement": "kg", //TODO
             "icon": "mdi:scale-bathroom"
-        }));
+        }), {retain: true});
     })
 };
 

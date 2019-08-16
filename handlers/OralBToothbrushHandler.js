@@ -27,7 +27,7 @@ OralBToothbrushHandler.prototype.setupAutodiscovery = function () {
             "platform": "mqtt",
             "availability_topic": "toothbrush/" + d.id + "/presence",
             "icon": "mdi:tooth-outline"
-        }));
+        }), {retain: true});
     })
 };
 
