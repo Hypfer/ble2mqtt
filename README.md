@@ -1,5 +1,7 @@
 # ble2mqtt
 
+**Deprecated** Use [https://github.com/Hypfer/Cybele](https://github.com/Hypfer/Cybele])
+
 ble2mqtt is a ~~simple~~ way to integrate bluetooth smart devices into home assistant as well as other smarthome systems.
 
 It aims to be a leaner and/or faster alternative to [room-assistant](https://github.com/mKeRix/room-assistant) as well as [bt-mqtt-gateway](https://github.com/zewelor/bt-mqtt-gateway)
